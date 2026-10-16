@@ -23,7 +23,10 @@ test-water-motor — <describe what this project does>
 
 ## Conventions
 
-- <coding style, naming, patterns to follow>
+- **Split sketches into multiple `.ino` files.** Don't put all the code in a single `.ino` file. Use one `.ino` file per module or feature (e.g. `pump.ino`, `sensors.ino`, `display.ino`) inside the sketch folder.
+  - The main file must have the same name as the sketch folder (e.g. `water_motor/water_motor.ino`). Keep it small: shared constants, pin definitions, global state, `setup()` and `loop()`, which call into the module files.
+  - The Arduino IDE combines the files with the main `.ino` first, then the others in alphabetical order. Declare anything shared between files (globals, constants) in the main `.ino` so it's defined before the other files use it.
+  - Each module file holds only the functions for its feature, e.g. `pumpSetup()`, `pumpUpdate()` in `pump.ino`.
 
 ## Rules for Claude
 
